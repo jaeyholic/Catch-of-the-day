@@ -12,7 +12,7 @@ export default class Header extends Component {
           </span>
         </h1>
         <h3 className="tagline">
-          <span>Fresh Daily</span>
+          <span>Fresh Seafood Market</span>
         </h3>
       </header>
     );
