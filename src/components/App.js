@@ -17,10 +17,20 @@ export default class App extends Component {
   componentDidMount() {
     //destructed location to find storeId
     const { params } = this.props.match;
+    //reinstate localstorage when component is mounted
+    const localStorageRef = localStorage.getItem(params.storeId);
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: "fishes"
     }); //mounting state to firebase and also prevent reloading of sample fishes to the page
+  }
+
+  componentDidUpdate() {
+    //setting storeId to localstorage to avoid order being cleared when page is refreshed
+    localStorage.setItem(
+      this.props.match.params.storeId,
+      JSON.stringify(this.state.order)
+    );
   }
 
   componentWillUnmount() {
