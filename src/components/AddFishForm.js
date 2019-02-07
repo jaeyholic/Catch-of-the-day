@@ -19,8 +19,8 @@ export default class addFishForm extends Component {
       image: this.imageRef.current.value
     };
     //add fish to state
-    this.props.addFish(fish);
-    //resfresh form
+    this.props.addFish(fish); //props from App.js
+    //reset form
     event.currentTarget.reset();
   };
 
