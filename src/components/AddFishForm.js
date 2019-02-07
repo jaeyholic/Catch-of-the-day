@@ -8,7 +8,7 @@ export default class addFishForm extends Component {
   imageRef = React.createRef();
 
   createFish = event => {
-    //stop form from submitting
+    //prevent form from submitting
     event.preventDefault();
     //get text from input
     const fish = {
