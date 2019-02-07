@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import SampleFishes from "../sample-fishes";
+import base from "../base";
 
 //Components
 import Header from "./Header";
@@ -12,6 +13,20 @@ export default class App extends Component {
     fishes: {},
     order: {}
   };
+
+  componentDidMount() {
+    //destructed location to find storeId
+    const { params } = this.props.match;
+    this.ref = base.syncState(`${params.storeId}/fishes`, {
+      context: this,
+      state: "fishes"
+    }); //mounting state to firebase and also prevent reloading of sample fishes to the page
+  }
+
+  componentWillUnmount() {
+    //removing state to avoid memory leaks after leaving page
+    base.removeBinding(this.ref);
+  }
 
   addFish = fish => {
     //take a copy of an existing object
