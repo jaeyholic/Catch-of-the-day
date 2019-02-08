@@ -17,8 +17,11 @@ export default class App extends Component {
   componentDidMount() {
     //destructed location to find storeId
     const { params } = this.props.match;
-    //reinstate localstorage when component is mounted
+    //reinstate local storage when component is mounted
     const localStorageRef = localStorage.getItem(params.storeId);
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
     this.ref = base.syncState(`${params.storeId}/fishes`, {
       context: this,
       state: "fishes"
