@@ -50,6 +50,15 @@ export default class App extends Component {
     this.setState({ fishes });
   };
 
+  updateFish = (key, updatedFish) => {
+    //take a copy of the current state
+    const fishes = { ...this.state.fishes };
+    //update state
+    fishes[key] = updatedFish;
+    //set to state
+    this.setState({ fishes });
+  };
+
   loadSampleFishes = () => {
     //setting fishes samples to state
     this.setState({ fishes: SampleFishes });
@@ -83,7 +92,9 @@ export default class App extends Component {
         <Order fishes={this.state.fishes} order={this.state.order} />
         <Inventory
           addFish={this.addFish}
+          updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
         />
       </div>
     );
