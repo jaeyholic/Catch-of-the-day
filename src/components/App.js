@@ -59,6 +59,15 @@ export default class App extends Component {
     this.setState({ fishes });
   };
 
+  deleteFish = key => {
+    //take a copy of fish
+    const fishes = { ...this.state.fishes };
+    //update state
+    fishes[key] = null;
+    //update state
+    this.setState({ fishes });
+  };
+
   loadSampleFishes = () => {
     //setting fishes samples to state
     this.setState({ fishes: SampleFishes });
@@ -95,6 +104,7 @@ export default class App extends Component {
           updateFish={this.updateFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
+          deleteFish={this.deleteFish}
         />
       </div>
     );
