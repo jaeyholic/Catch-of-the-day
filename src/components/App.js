@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SampleFishes from "../sample-fishes";
 import base from "../base";
+import PropTypes from "prop-types";
 
 //Components
 import Header from "./Header";
@@ -12,6 +13,10 @@ export default class App extends Component {
   state = {
     fishes: {},
     order: {}
+  };
+
+  static propTypes = {
+    match: PropTypes.object
   };
 
   componentDidMount() {
